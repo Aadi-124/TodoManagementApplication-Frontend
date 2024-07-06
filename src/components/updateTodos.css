@@ -1,0 +1,14 @@
+.updatemainContainer{
+    width:40vh;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.updatesubmitContainer{
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-around;
+}

@@ -1,0 +1,149 @@
+
+    function Authenticate(){
+
+        const basicAuthToken = "Basic "+window.btoa(username+":"+password);
+        BasicAuthentication(basicAuthToken)
+        .then(
+            (response)=>{
+                if(response.status == 200){
+                    Authentication.setAuthenticate(true);
+                    Authentication.setUsername(username);
+                    Authentication.setToken(basicAuthToken);
+                    setSuccess(true); 
+                    setError(false); 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "Signed in successfully"
+                    });
+                    navigate(`../welcome/${username}`);
+                }
+            }
+                
+        )
+        .catch(
+            (error)=>{
+            setSuccess(false); 
+            setError(true); 
+            Authentication.setUsername(null);
+            Authentication.setAuthenticate(false);
+            Authentication.setToken(null);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "error",
+                title: "Incorrect Username or Password"
+              });
+            }
+        )
+        
+        if(username === "Aaditya" && password === "123"){
+            console.log("Authetication Successfull!");
+            Authentication.setAuthenticate(true);
+            Authentication.setUsername(username);
+            setSuccess(true); 
+            setError(false); 
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "success",
+                title: "Signed in successfully"
+              });
+            navigate(`../welcome/${username}`);
+        } else {
+            setSuccess(false); 
+            setError(true); 
+            Authentication.setUsername(null);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "error",
+                title: "Incorrect Username or Password"
+              });
+        }
+    }
+    function Authenticate(){
+        if(username === "Aaditya" && password === "123"){
+            console.log("Authetication Successfull!");
+            Authentication.setAuthenticate(true);
+            Authentication.setUsername(username);
+            setSuccess(true); 
+            setError(false); 
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "success",
+                title: "Signed in successfully"
+              });
+            navigate(`../welcome/${username}`);
+        } else {
+            setSuccess(false); 
+            setError(true); 
+            Authentication.setUsername(null);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "error",
+                title: "Incorrect Username or Password"
+              });
+        }
+    }
+    
+    const Authenticate = () =>{
+        
+    }

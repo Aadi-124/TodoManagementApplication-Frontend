@@ -1,0 +1,16 @@
+.cardcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    
+.cards{
+    border:2px solid rgb(0, 0, 0);
+    width: 40vh;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 300px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-radius: 40px;
+}

@@ -1,0 +1,159 @@
+.OTPContainer{
+    width:100%;
+    margin:200px auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 30vh;
+}
+
+/* .resetContainer{
+    display: flex;
+    flex-direction: column;
+    width: 40vh;
+    margin: 150px auto;
+} */
+
+
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+  }
+  
+  .colored-toast.swal2-icon-error {
+    background-color: #f27474 !important;
+  }
+  
+  .colored-toast.swal2-icon-warning {
+    background-color: #f8bb86 !important;
+  }
+  
+  .colored-toast.swal2-icon-info {
+    background-color: #3fc3ee !important;
+  }
+  
+  .colored-toast.swal2-icon-question {
+    background-color: #87adbd !important;
+  }
+  
+  .colored-toast .swal2-title {
+    color: white;
+  }
+  
+  .colored-toast .swal2-close {
+    color: white;
+  }
+  
+  .colored-toast .swal2-html-container {
+    color: white;
+  }
+  
+
+.forgotcontainer{
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.resetheading{
+    display: inline;
+    width: 280px;
+}
+
+
+.mainContainer{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+}
+
+.resetheading{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(120, 25, 25);
+}
+/* 
+div{
+    border:3px solid red;
+} */
+
+.submit{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: inherit;
+    align-items: center;
+    justify-content: space-around;
+    width:80vh;
+}
+
+
+
+.inp{
+    width:150px;
+    height: 50px;
+}
+
+
+/* .inp{
+    border:2px solid red;
+} */
+
+/* 
+div{
+    border:2px solid green;
+} */
+
+.subContainer{
+    display: flex;
+    flex-shrink: inherit;
+}
+
+.headingOTP{
+    color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(31, 142, 3);
+    font-size:15px;
+    font-weight: bolder;
+    width: 250%;
+}
+
+
+
+
+.mainContainer{
+  display: flex;
+  margin: 0px;
+  flex-shrink: inherit;
+  width: min-content;
+  height: 30vh;
+  align-items: center;
+
+}
+
+.inpContainer{
+  display: flex;
+  flex-direction: column;
+  height: 17vh;
+  width:400px;
+}
+
+.submitContainer{
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+}
+
+
+.addtodoContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:30vh;
+  justify-content: space-around;
+}
+
+

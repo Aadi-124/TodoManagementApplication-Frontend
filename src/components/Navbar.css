@@ -1,0 +1,9 @@
+.links{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    /* margin:20px; */
+}

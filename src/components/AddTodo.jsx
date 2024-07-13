@@ -13,6 +13,15 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateField } from '@mui/x-date-pickers/DateField';
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import './Todos.css';
+import LoadingButton from '@mui/lab/LoadingButton';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import SaveIcon from '@mui/icons-material/Save';
+import SendIcon from '@mui/icons-material/Send';
+
+import AddCircleIcon from '@mui/icons-material/Add';
+import React from "react";
+
 export default function AddTodo() {
 
     const Authentication = Auth();
@@ -32,7 +41,7 @@ export default function AddTodo() {
 
     const onSubmit = () => {
 
-
+        setLoading(true);
         const todo = {
             userid: Authentication.userid,
             description: getValues("tododescription"),
@@ -41,6 +50,7 @@ export default function AddTodo() {
             like: 0,
             dislike: 0,
             createdDate: Date.now(),
+            userName:Authentication.username
         }
 
         addUserTodo(token,todo)
@@ -56,14 +66,12 @@ export default function AddTodo() {
                 })
             })
             .catch(() => {
+                setLoading(false);
                 Swal.fire({
                     title: 'Todo Not Added!',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 }).then((response) => {
-                    if (response.isConfirmed) {
-                        navigate("/table");
-                    }
                 })
             });
 
@@ -104,6 +112,12 @@ export default function AddTodo() {
         navigate("/table");
     }
 
+    const [loading, setLoading] = React.useState(false);
+    function handleClick() {
+      setLoading(true);
+    }
+  
+
 
     return (
         <>
@@ -126,7 +140,19 @@ export default function AddTodo() {
                     </div>
                     <div className="addtodosubContainer">
                     <Button variant="contained" onClick={cancel} style={{ fontWeight: "bolder", margin: "30px" }} color="error">Cancel</Button>
-                    <Button variant="contained" type="submit" style={{ fontWeight: "bolder", margin: "30px" }} color="success">Add Todo</Button>
+                    {/* <Button variant="contained" type="submit" style={{ fontWeight: "bolder", margin: "30px" }} color="success">Add Todo</Button> */}
+                    <LoadingButton
+                        type="submit"
+                        loading={loading}
+                        endIcon={<AddCircleIcon/>}
+                        loadingPosition="end"
+                        variant="contained"
+                        style={{ fontWeight: "bolder", margin: "30px" }}
+                        color="success"
+                        
+                        >
+                        <span>Add Todo</span>
+                    </LoadingButton>
                     </div>
                     </div>
                 </form>

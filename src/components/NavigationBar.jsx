@@ -139,7 +139,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/")}>
               <ListItemIcon>
-                <HomeIcon/>
+                <HomeIcon style={{color:"green"}}/>
               </ListItemIcon>
                 HOME
               <ListItemText/>
@@ -152,7 +152,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/welcome")}>
               <ListItemIcon>
-              <InsertEmoticonSharpIcon/>
+              <InsertEmoticonSharpIcon style={{color:"rgb(255, 213, 0)"}}/>
               </ListItemIcon>
                 WELCOME
               <ListItemText/>
@@ -165,7 +165,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/table")}>
               <ListItemIcon>
-                <ListIcon/>
+                <ListIcon style={{color:"purple"}}/>
               </ListItemIcon>
                 TODOS
               <ListItemText/>
@@ -178,7 +178,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/addtodo")}>
               <ListItemIcon>
-                <AddCircleIcon/>
+                <AddCircleIcon style={{color:"rgb(1, 167, 212)"}}/>
               </ListItemIcon>
                 ADD TODOS
               <ListItemText/>
@@ -191,7 +191,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/")}>
               <ListItemIcon>
-                <HomeIcon/>
+                <HomeIcon style={{color:"green"}}/>
               </ListItemIcon>
                 HOME
               <ListItemText/>
@@ -204,7 +204,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/welcome")}>
               <ListItemIcon>
-                <InsertEmoticonSharpIcon/>
+                <InsertEmoticonSharpIcon style={{color:"rgb(255, 213, 0)"}}/>
               </ListItemIcon>
                 WELCOME
               <ListItemText/>
@@ -217,7 +217,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/addtodo")}>
               <ListItemIcon>
-                <AddCircleIcon/>
+                <AddCircleIcon style={{color:"rgb(1, 167, 212)"}}/>
               </ListItemIcon>
                 ADD TODOS
               <ListItemText/>
@@ -230,7 +230,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/table")}>
               <ListItemIcon>
-                <ListIcon/>
+                <ListIcon style={{color:"purple"}}/>
               </ListItemIcon>
                 TODOS
               <ListItemText/>
@@ -243,7 +243,7 @@ export default function NavigationBar() {
           <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/showalltodo")}>
               <ListItemIcon>
-                <ListIcon/>
+                <ListIcon style={{color:"purple"}}/>
               </ListItemIcon>
                 SHOW ALL TODOS
               <ListItemText/>
@@ -259,7 +259,7 @@ export default function NavigationBar() {
             <ListItem disablePadding>
             <ListItemButton onClick={()=>navigate("/about")}>
               <ListItemIcon>
-                  <InfoSharpIcon/>
+                  <InfoSharpIcon style={{color:"blue"}}/>
               </ListItemIcon>
                ABOUT
               <ListItemText/>

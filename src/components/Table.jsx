@@ -25,6 +25,10 @@ import './Sample.css';
 import Box from '@mui/material/Box';
 import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import OfflinePinIcon from '@mui/icons-material/OfflinePin';
+import LinearProgress from '@mui/material/LinearProgress';
+import { BarLoader } from 'react-spinners';
+import AddIcon from '@mui/icons-material/Add';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -52,6 +56,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function CustomizedTables() {
 
   const [todos, setTodos] = useState([]);
+  const [noTodos, setNoTodos] = useState(false);
 
   const navigate = useNavigate();
   const Authentication = Auth();
@@ -102,6 +107,7 @@ export default function CustomizedTables() {
     getUserTodo(token,credentials)
       .then((response) => {
         console.log(response.data);
+        if(response.data.length == 0){setNoTodos(true)}
         setTodos(response.data) })
       .catch((error) => {})
       .finally(() => {})
@@ -207,83 +213,110 @@ export default function CustomizedTables() {
     });
   }
 
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  useEffect(() => {
+    setTimeout(() => {
+        setIsLoading(false); // Hide the loader after a simulated delay
+    }, 3000); // Replace 2000 with your expected loading time
+}, []);
+
+
+return (
+  <div>
+      {isLoading ? (
+        <div className='loader_container'>
+               <BarLoader className='loader' height={5} width={300} color={"green"}/>
+               </div>
+                  
+                ) : (
+                  <center>
+
+
+        <br /><br /><br />  
+        <div className='todo_add_button button-80' onClick={()=>navigate("/addtodo")}>
+        <AddIcon style={{ fontSize: "70px", color:"white" }} />
+      </div>
+
+          <h1 className='heading'>TODOs</h1>
+          {noTodos && <div className='not_found_message'><p className="not_text">You Haven't Added Any Todos 😢</p></div>}
+    
+          <Box className="cardcontainer">
+    
+    
+    
+                {todos.map((todo) => (
+    
+    
+                  
+    <CardContent  className='cards'  key={todo.id}>
+        <Typography color="red" fontWeight={'bolder'} gutterBottom>
+        Targeted Date : {todo.targetedDate}
+        </Typography>
+        <Typography variant="h5" component="div">
+        {todo.userspecifictodoid}
+        </Typography>
+    
+    {
+    todo.isDone && 
+    <Typography style={{"color":"green","font-weight":"bolder","font-size":"20px"}}>
+      <div>
+      Done <OfflinePinIcon/>
+    
+      </div>
+        {/* {todo.isDone && 'Done'}{!todo.isDone && 'Not Done'}{!todo.isDone && <UnpublishedIcon/>}{todo.isDone &&  <OfflinePinIcon/>} */}
+        </Typography>
+    }
+    
+    {
+    !todo.isDone && 
+    <Typography style={{"color":"red","font-weight":"bolder","font-size":"20px"}}>
+      Done <UnpublishedIcon/>
+        {/* {todo.isDone && 'Done'}{!todo.isDone && 'Not Done'}{!todo.isDone && <UnpublishedIcon/>}{todo.isDone &&  <OfflinePinIcon/>} */}
+        </Typography>
+    }
+    
+    
+        
+        <Typography variant="body2">
+        
+        <p style={{"font-size":"15px"}}>{todo.description}</p>
+        </Typography>
+        <Button variant='contained' color='error' onClick={() => deleteTodo(todo.id)} style={{ fontWeight: 'bolder', margin: '5px' }}>Delete</Button>
+        <Button variant='contained' color='warning' onClick={() => updateTodo(todo.id,todo.description,todo.targetedDate)} style={{ fontWeight: 'bolder', margin: '5px', backgroundColor: "rgb(220, 143, 0)" }}>Update</Button>
+        {!todo.isDone && <Button variant='contained' color='success' onClick={()=>{setDone(todo.id)}} style={{ fontWeight: 'bolder', margin: '5px' }}>Done</Button>}   
+      </CardContent>
+                  // <StyledTableRow key={todo.id}>
+                  //   <StyledTableCell component="th" align='center' scope="row">{todo.userspecifictodoid}</StyledTableCell>
+                  //   <StyledTableCell align="center">{todo.description}</StyledTableCell>
+                  //   <StyledTableCell align="center">{todo.isDone && 'Done'}{!todo.isDone && 'Not Done'}</StyledTableCell>
+                  //   <StyledTableCell align="center">{todo.targetedDate}</StyledTableCell>
+                  //   <StyledTableCell align="left">
+                  //     <Button variant='contained' color='error' onClick={() => deleteTodo(todo.id)} style={{ fontWeight: 'bolder', margin: '5px' }}>Delete</Button>
+                  //     <Button variant='contained' color='warning' onClick={() => updateTodo(todo.id,todo.description,todo.targetedDate)} style={{ fontWeight: 'bolder', margin: '5px', backgroundColor: "rgb(220, 143, 0)" }}>Update</Button>
+                  //     {!todo.isDone && <Button variant='contained' color='success' onClick={()=>{setDone(todo.id)}} style={{ fontWeight: 'bolder', margin: '5px' }}>Done</Button>}
+                  //   </StyledTableCell>
+                  // </StyledTableRow>
+                  ))}
+        </Box>
+        <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </center>
+    
+    
+    
+      )}
+  </div>
+);
 
 
   return (
-    <>
-      <center>
-      <br /><br /><br />  
-        <h1 className='heading'>TODOs</h1>
-
-        <Box className="cardcontainer">
-
-
-
-              {todos.map((todo) => (
-
-
-                
-<CardContent  className='cards'  key={todo.id}>
-      <Typography color="red" fontWeight={'bolder'} gutterBottom>
-      Targeted Date : {todo.targetedDate}
-      </Typography>
-      <Typography variant="h5" component="div">
-      {todo.userspecifictodoid}
-      </Typography>
-
-{
-  todo.isDone && 
-  <Typography style={{"color":"green","font-weight":"bolder","font-size":"20px"}}>
-    <div>
-    Done <OfflinePinIcon/>
-
-    </div>
-      {/* {todo.isDone && 'Done'}{!todo.isDone && 'Not Done'}{!todo.isDone && <UnpublishedIcon/>}{todo.isDone &&  <OfflinePinIcon/>} */}
-      </Typography>
-}
-
-{
-  !todo.isDone && 
-  <Typography style={{"color":"red","font-weight":"bolder","font-size":"20px"}}>
-    Done <UnpublishedIcon/>
-      {/* {todo.isDone && 'Done'}{!todo.isDone && 'Not Done'}{!todo.isDone && <UnpublishedIcon/>}{todo.isDone &&  <OfflinePinIcon/>} */}
-      </Typography>
-}
-
-
-      
-      <Typography variant="body2">
-      
-      <p style={{"font-size":"15px"}}>{todo.description}</p>
-      </Typography>
-      <Button variant='contained' color='error' onClick={() => deleteTodo(todo.id)} style={{ fontWeight: 'bolder', margin: '5px' }}>Delete</Button>
-      <Button variant='contained' color='warning' onClick={() => updateTodo(todo.id,todo.description,todo.targetedDate)} style={{ fontWeight: 'bolder', margin: '5px', backgroundColor: "rgb(220, 143, 0)" }}>Update</Button>
-      {!todo.isDone && <Button variant='contained' color='success' onClick={()=>{setDone(todo.id)}} style={{ fontWeight: 'bolder', margin: '5px' }}>Done</Button>}   
-    </CardContent>
-                // <StyledTableRow key={todo.id}>
-                //   <StyledTableCell component="th" align='center' scope="row">{todo.userspecifictodoid}</StyledTableCell>
-                //   <StyledTableCell align="center">{todo.description}</StyledTableCell>
-                //   <StyledTableCell align="center">{todo.isDone && 'Done'}{!todo.isDone && 'Not Done'}</StyledTableCell>
-                //   <StyledTableCell align="center">{todo.targetedDate}</StyledTableCell>
-                //   <StyledTableCell align="left">
-                //     <Button variant='contained' color='error' onClick={() => deleteTodo(todo.id)} style={{ fontWeight: 'bolder', margin: '5px' }}>Delete</Button>
-                //     <Button variant='contained' color='warning' onClick={() => updateTodo(todo.id,todo.description,todo.targetedDate)} style={{ fontWeight: 'bolder', margin: '5px', backgroundColor: "rgb(220, 143, 0)" }}>Update</Button>
-                //     {!todo.isDone && <Button variant='contained' color='success' onClick={()=>{setDone(todo.id)}} style={{ fontWeight: 'bolder', margin: '5px' }}>Done</Button>}
-                //   </StyledTableCell>
-                // </StyledTableRow>
-                ))}
-      </Box>
-      <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-      </center>
-
-
-
-
+  <>
 
 
 

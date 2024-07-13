@@ -75,11 +75,11 @@ function App(){
   const [userid,setUserid] = useState('');
   const [process,setProcess] = useState('');
 
-
+  
+  // const navigate = useNavigate();
   function navigateTo(destination)  {
     const navigate = useNavigate();
-    // Here the use Effect is only used to just avoid warnings
-
+    // navigate(destination);
     useEffect(() => {
       navigate(destination);
     }, []);
@@ -156,6 +156,8 @@ function App(){
         <Route path="/forgot-otp" element={<AuthenticateRouteForProcess> <ForgotOTP/> </AuthenticateRouteForProcess>    }/>
         <Route path="/forgotpassword" element={<AuthenticateRouteForProcess> <ForgotPass/> </AuthenticateRouteForProcess>  }/>
         <Route path="/adminregistrationotp" element={<AuthenticateRouteForProcess> <AdminRegistrationotp/> </AuthenticateRouteForProcess>  }/>
+
+        <Route path="/sample" element={ <Sample/> }/>
         
         
 
